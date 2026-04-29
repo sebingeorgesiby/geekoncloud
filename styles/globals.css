@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-white text-ink-900 antialiased;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 bg-cloud-600 text-white text-sm font-medium rounded-lg hover:bg-cloud-700 transition-colors;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-ink-600 text-sm hover:text-ink-900 hover:bg-ink-50 rounded-lg transition-colors;
+  }
+  .tag {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cloud-50 text-cloud-700 border border-cloud-100;
+  }
+  .card {
+    @apply bg-white border border-ink-100 rounded-xl hover:border-ink-200 hover:shadow-sm transition-all duration-200;
+  }
+}
+
+/* Code block syntax */
+pre { @apply overflow-x-auto rounded-xl p-5 my-6; }
+pre code { @apply bg-transparent p-0 text-sm; }
+
+/* Scanline effect on hero */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.015) 2px,
+    rgba(0,0,0,0.015) 4px
+  );
+  pointer-events: none;
+}
+
+/* Fade in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+.fade-up-1 { animation-delay: 0.05s; opacity: 0; }
+.fade-up-2 { animation-delay: 0.12s; opacity: 0; }
+.fade-up-3 { animation-delay: 0.2s;  opacity: 0; }
+.fade-up-4 { animation-delay: 0.3s;  opacity: 0; }
