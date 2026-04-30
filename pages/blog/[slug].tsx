@@ -66,7 +66,7 @@ export default function PostPage({ post }: PostPageProps) {
 }
 
 export async function getStaticPaths() {
-  return { paths: getAllSlugs(), fallback: false }
+  return { paths: getAllSlugs(), fallback: 'blocking' }
 }
 
 export async function getStaticProps({ params }: { params: { slug: string } }) {

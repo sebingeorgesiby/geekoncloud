@@ -1,0 +1,9 @@
+[
+  "AWS Spot Instances in production — patterns that actually work",
+  "MTTR vs MTBF — metrics that matter for reliability",
+  "Scanning container images in CI with Trivy and Grype",
+  "Chaos engineering with LitmusChaos on Kubernetes",
+  "On-call runbooks that actually help during incidents",
+  "GitLab CI vs GitHub Actions — a DevOps engineer comparison",
+  "Distributed tracing with Tempo and Grafana"
+]
