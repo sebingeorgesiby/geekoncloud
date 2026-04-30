@@ -26,8 +26,13 @@ export default function TagPage({ tag, posts }: TagProps) {
 
 export async function getStaticPaths() {
   const posts = getSortedPosts()
-  const tags = [...new Set(posts.flatMap(p => p.tags))]
-  return { paths: tags.map(tag => ({ params: { tag: tag.toLowerCase().replace(/ /g, '-') } })), fallback: 'blocking' }
+  const tagSet: Record<string, boolean> = {}
+  posts.forEach(p => p.tags.forEach(t => { tagSet[t] = true }))
+  const tags = Object.keys(tagSet)
+  return {
+    paths: tags.map(tag => ({ params: { tag: tag.toLowerCase().replace(/ /g, '-') } })),
+    fallback: 'blocking'
+  }
 }
 
 export async function getStaticProps({ params }: { params: { tag: string } }) {
