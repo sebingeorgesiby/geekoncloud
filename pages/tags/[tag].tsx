@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout'
+﻿import Layout from '../../components/Layout'
 import PostCard from '../../components/PostCard'
 import Link from 'next/link'
 import { getSortedPosts, Post } from '../../lib/posts'
@@ -10,7 +10,7 @@ export default function TagPage({ tag, posts }: TagProps) {
     <Layout title={tag} description={`All posts tagged ${tag} on GeekOnCloud.`}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <Link href="/tags" className="inline-flex items-center gap-1.5 text-sm text-ink-400 hover:text-ink-700 mb-6">
-          ← All topics
+          Back to Topics
         </Link>
         <div className="flex items-center gap-3 mb-8">
           <span className="tag text-base px-3 py-1">{tag}</span>
@@ -27,7 +27,7 @@ export default function TagPage({ tag, posts }: TagProps) {
 export async function getStaticPaths() {
   const posts = getSortedPosts()
   const tagMap: Record<string, boolean> = {}
-  posts.forEach(p => p.tags.forEach(t => { tagMap[t] = true }))
+  posts.forEach(p => p.tags.forEach((t: string) => { tagMap[t] = true }))
   const tags = Object.keys(tagMap)
   return {
     paths: tags.map(tag => ({ params: { tag: tag.toLowerCase().replace(/ /g, '-') } })),
@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { tag: string } }) {
   const posts = getSortedPosts()
   const tagName = params.tag.replace(/-/g, ' ')
-  const filtered = posts.filter(p => p.tags.some(t => t.toLowerCase() === tagName))
-  const matchedTag = filtered[0]?.tags.find(t => t.toLowerCase() === tagName) || tagName
+  const filtered = posts.filter((p: any) => p.tags.some((t: string) => t.toLowerCase() === tagName))
+  const matchedTag = filtered[0]?.tags.find((t: string) => t.toLowerCase() === tagName) || tagName
   return { props: { tag: matchedTag, posts: filtered } }
 }
