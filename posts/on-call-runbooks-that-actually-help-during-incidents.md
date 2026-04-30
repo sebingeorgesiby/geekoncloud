@@ -1,7 +1,7 @@
----
-title: On-Call Runbooks That Actually Work at 3AM
+﻿---
+title: "On-Call Runbooks That Actually Work at 3AM"
 date: 2026-04-29
-excerpt: Stop writing useless runbooks. Build incident docs with decision trees, copy-paste commands, and real escalation paths that save you at 3AM.
+excerpt: "Stop writing useless runbooks. Build incident docs with decision trees, copy-paste commands, and real escalation paths that save you at 3AM."
 tags: ["incident-response","on-call","sre","runbooks","observability"]
 author: GeekOnCloud
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 Every engineer has lived this nightmare: 3 AM page, bleary-eyed SSH into production, frantically searching Confluence for that runbook someone wrote two years ago. You find it. Step 3 says "restart the service." Which service? On which host? With what flags? The runbook was written for infrastructure that no longer exists.
 
-Most runbooks fail because they're written during calm retrospectives by people who've already forgotten the panic of the actual incident. They're documentation theater—they exist to satisfy audit requirements, not to help humans under stress.
+Most runbooks fail because they're written during calm retrospectives by people who've already forgotten the panic of the actual incident. They're documentation theaterâ€”they exist to satisfy audit requirements, not to help humans under stress.
 
 Let's fix that.
 
@@ -92,7 +92,7 @@ Notice what's different:
 
 ## Executable Runbooks: Beyond Documentation
 
-The best runbooks aren't documents—they're scripts with documentation attached. Here's a pattern using a simple bash wrapper:
+The best runbooks aren't documentsâ€”they're scripts with documentation attached. Here's a pattern using a simple bash wrapper:
 
 ```bash
 #!/usr/bin/env bash
@@ -201,7 +201,7 @@ Runbooks rot faster than any other documentation. Three practices keep them usef
 
 **2. Link them to alerts.** Your PagerDuty/Opsgenie alert should include a direct link to the relevant runbook. If the alert doesn't map to a runbook, either the alert is noisy or you're missing documentation.
 
-**3. Update during the incident.** This feels counterintuitive—you're firefighting, not writing docs. But add one line: "Step 3 didn't work because X. Did Y instead." Tomorrow's you will be grateful.
+**3. Update during the incident.** This feels counterintuitiveâ€”you're firefighting, not writing docs. But add one line: "Step 3 didn't work because X. Did Y instead." Tomorrow's you will be grateful.
 
 **4. Version control them.** Runbooks in Git mean you can see what changed, blame who changed it, and roll back bad updates. Confluence pages don't give you that.
 
@@ -209,7 +209,7 @@ Runbooks rot faster than any other documentation. Three practices keep them usef
 
 Here's the uncomfortable truth: runbooks fail because nobody owns them. They're written once during onboarding or after a bad incident, then abandoned.
 
-Assign every runbook an owner—not a team, a person. That person is responsible for:
+Assign every runbook an ownerâ€”not a team, a person. That person is responsible for:
 - Testing it quarterly
 - Updating it when infrastructure changes
 - Being paged when someone else runs it and hits a problem
@@ -218,6 +218,6 @@ Add this to the runbook header. Make it part of your service catalog. When the o
 
 ## Your First Step
 
-Pick your noisiest alert from the last month. Write a runbook for it using the YAML structure above. Tomorrow, during business hours, have someone else on your team execute it while you watch. Don't help them—just take notes on where they get stuck.
+Pick your noisiest alert from the last month. Write a runbook for it using the YAML structure above. Tomorrow, during business hours, have someone else on your team execute it while you watch. Don't help themâ€”just take notes on where they get stuck.
 
 Those notes are your backlog. Fix them, then move to the next alert.

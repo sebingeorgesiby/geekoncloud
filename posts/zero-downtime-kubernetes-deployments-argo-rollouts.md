@@ -1,7 +1,7 @@
----
-title: Zero-downtime Kubernetes deployments with Argo Rollouts
+﻿---
+title: "Zero-downtime Kubernetes deployments with Argo Rollouts"
 date: 2025-04-20
-excerpt: Stop using RollingUpdate and start using progressive delivery. A practical guide to canary and blue/green deployments with Argo Rollouts on any Kubernetes cluster.
+excerpt: "Stop using RollingUpdate and start using progressive delivery. A practical guide to canary and blue/green deployments with Argo Rollouts on any Kubernetes cluster."
 tags: ["Kubernetes", "GitOps", "CI/CD"]
 author: GeekOnCloud
 draft: false
@@ -17,9 +17,9 @@ Argo Rollouts solves this cleanly.
 
 Argo Rollouts is a Kubernetes controller that extends the native deployment model with:
 
-- **Canary deployments** — shift traffic progressively (5% → 25% → 100%) with automated analysis
-- **Blue/green deployments** — run two parallel environments, switch instantly
-- **Analysis runs** — gate promotions behind Prometheus metrics, Datadog, or custom webhooks
+- **Canary deployments** â€” shift traffic progressively (5% â†’ 25% â†’ 100%) with automated analysis
+- **Blue/green deployments** â€” run two parallel environments, switch instantly
+- **Analysis runs** â€” gate promotions behind Prometheus metrics, Datadog, or custom webhooks
 
 ## Installation
 
@@ -111,4 +111,4 @@ If you're using Argo CD, install the [argo-cd-rollouts plugin](https://argo-cd.r
 
 ## Conclusion
 
-Argo Rollouts takes about 30 minutes to install and configure. The payoff is production deployments you can actually control — progressive traffic shifts, automated rollback, and full observability. There's no reason to run raw `RollingUpdate` in production once you've tried it.
+Argo Rollouts takes about 30 minutes to install and configure. The payoff is production deployments you can actually control â€” progressive traffic shifts, automated rollback, and full observability. There's no reason to run raw `RollingUpdate` in production once you've tried it.

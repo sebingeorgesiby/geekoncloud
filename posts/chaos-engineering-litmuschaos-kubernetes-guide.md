@@ -1,19 +1,19 @@
----
-title: LitmusChaos on Kubernetes: Practical Chaos Engineering Guide
+﻿---
+title: "LitmusChaos on Kubernetes: Practical Chaos Engineering Guide"
 date: 2026-04-29
-excerpt: Deploy LitmusChaos on K8s, run pod-kill and network chaos experiments, and build resilient systems. Real configs and YAML examples included.
+excerpt: "Deploy LitmusChaos on K8s, run pod-kill and network chaos experiments, and build resilient systems. Real configs and YAML examples included."
 tags: ["chaos-engineering","kubernetes","litmus","site-reliability","resilience-testing"]
 author: GeekOnCloud
 draft: false
 ---
 
-Your Kubernetes cluster runs perfectly in staging. Deploys are green, pods are healthy, metrics look clean. Then production hits 3x traffic on Black Friday, a node goes down, and suddenly you discover your app doesn't handle graceful degradation—it cascades into a full outage. Chaos engineering exists to find these failures before your customers do. LitmusChaos is the CNCF's answer to bringing this discipline natively into Kubernetes.
+Your Kubernetes cluster runs perfectly in staging. Deploys are green, pods are healthy, metrics look clean. Then production hits 3x traffic on Black Friday, a node goes down, and suddenly you discover your app doesn't handle graceful degradationâ€”it cascades into a full outage. Chaos engineering exists to find these failures before your customers do. LitmusChaos is the CNCF's answer to bringing this discipline natively into Kubernetes.
 
 ## Why LitmusChaos Over Alternatives
 
 The chaos engineering space has options: Gremlin (commercial), Chaos Monkey (Netflix's original), PowerfulSeal, and Chaos Mesh. LitmusChaos wins for Kubernetes-native workflows because it's built entirely on CRDs and operators. Your chaos experiments become version-controlled YAML alongside your application manifests. It also integrates directly with Argo Workflows, Keptn, and GitOps pipelines without bolting on external schedulers.
 
-LitmusChaos operates on a hub model—ChaosHub hosts pre-built experiments for common failure scenarios. Need to kill a pod? There's an experiment. Stress CPU on a node? Done. Inject network latency between services? Already written. You're not building experiments from scratch; you're customizing parameters on battle-tested chaos definitions.
+LitmusChaos operates on a hub modelâ€”ChaosHub hosts pre-built experiments for common failure scenarios. Need to kill a pod? There's an experiment. Stress CPU on a node? Done. Inject network latency between services? Already written. You're not building experiments from scratch; you're customizing parameters on battle-tested chaos definitions.
 
 The architecture matters: LitmusChaos runs a control plane (litmus-portal) for experiment orchestration and visibility, while chaos-operator handles the actual injection. Experiments run as Kubernetes jobs with specific RBAC permissions, meaning blast radius is controlled by standard K8s primitives you already understand.
 
@@ -50,7 +50,7 @@ The portal gives you a web UI for designing experiments, but the real power is t
 
 ## Your First Chaos Experiment: Pod Delete
 
-Start simple. The pod-delete experiment validates that your application recovers when Kubernetes reschedules a pod—something that happens constantly in real clusters due to node failures, evictions, and rolling updates.
+Start simple. The pod-delete experiment validates that your application recovers when Kubernetes reschedules a podâ€”something that happens constantly in real clusters due to node failures, evictions, and rolling updates.
 
 Create a `ChaosEngine` resource targeting your application:
 
@@ -96,7 +96,7 @@ spec:
                   responseCode: '200'
 ```
 
-The critical piece here is the probe. Without it, you're just breaking things. The httpProbe continuously checks whether your service remains accessible while chaos runs. If responses fail, the experiment marks itself as failed—giving you a clear signal that your application didn't handle the failure gracefully.
+The critical piece here is the probe. Without it, you're just breaking things. The httpProbe continuously checks whether your service remains accessible while chaos runs. If responses fail, the experiment marks itself as failedâ€”giving you a clear signal that your application didn't handle the failure gracefully.
 
 Apply it with `kubectl apply -f chaos-engine.yaml`. The experiment creates a chaos runner pod that executes the pod-delete logic according to your parameters. Watch it with `kubectl get chaosresult nginx-chaos-pod-delete -o yaml` to see pass/fail status.
 
@@ -158,7 +158,7 @@ With GitHub Actions and LitmusChaos:
     fi
 ```
 
-The key insight: chaos experiments should have success criteria. "We broke something" isn't the goal. "We broke something and the system recovered within SLO" is the goal. Define your probes to measure what matters—response times staying under p99 thresholds, error rates staying below 1%, downstream services remaining unaffected.
+The key insight: chaos experiments should have success criteria. "We broke something" isn't the goal. "We broke something and the system recovered within SLO" is the goal. Define your probes to measure what mattersâ€”response times staying under p99 thresholds, error rates staying below 1%, downstream services remaining unaffected.
 
 ## Observability During Chaos
 
@@ -171,10 +171,10 @@ Running experiments blind is useless. Before triggering chaos, ensure you have d
 
 LitmusChaos integrates with Prometheus through ServiceMonitors. The chaos-exporter exposes metrics like `litmuschaos_experiment_verdict` and `litmuschaos_experiment_duration` that you can alert on.
 
-Create a Grafana dashboard with annotations marking chaos experiment windows. When you review incidents later, you'll immediately see whether chaos was running—eliminating confusion about whether observed failures were intentional.
+Create a Grafana dashboard with annotations marking chaos experiment windows. When you review incidents later, you'll immediately see whether chaos was runningâ€”eliminating confusion about whether observed failures were intentional.
 
 ## Moving Forward
 
-Start with experiments matching real incidents you've experienced. If you've had node failures cause outages, run node-drain experiments. If network issues between services caused cascading failures, inject latency between those specific services. Chaos engineering isn't about random destruction—it's about systematically validating that your systems handle the failures you know will happen.
+Start with experiments matching real incidents you've experienced. If you've had node failures cause outages, run node-drain experiments. If network issues between services caused cascading failures, inject latency between those specific services. Chaos engineering isn't about random destructionâ€”it's about systematically validating that your systems handle the failures you know will happen.
 
 Your next step: pick one critical service, write one chaos experiment with a meaningful probe, and run it in staging tomorrow. Commit the experiment YAML to your infrastructure repo. You'll learn more about your system's failure modes in 30 minutes than months of reading runbooks.

@@ -1,7 +1,7 @@
----
-title: Microsoft Defender for Endpoint Setup Guide for IT Admins
+﻿---
+title: "Microsoft Defender for Endpoint Setup Guide for IT Admins"
 date: 2026-04-29
-excerpt: Deploy Microsoft Defender for Endpoint across your org. Step-by-step onboarding, GPO configs, Intune policies, and alert tuning for production environments.
+excerpt: "Deploy Microsoft Defender for Endpoint across your org. Step-by-step onboarding, GPO configs, Intune policies, and alert tuning for production environments."
 tags: ["microsoft-defender","endpoint-security","intune","windows-security","siem"]
 author: GeekOnCloud
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 Every enterprise security team eventually faces the same question: how do we get consistent endpoint protection across Windows, macOS, and Linux without deploying three different solutions? Microsoft Defender for Endpoint (MDE) answers that question, but the onboarding process is where most IT admins get stuck. I've deployed MDE across organizations ranging from 500 to 50,000 endpoints, and the difference between a smooth rollout and a support ticket nightmare comes down to preparation and methodology.
 
-This guide covers the actual steps to get MDE running in production—not the marketing overview, but the commands you'll run and the decisions you'll make.
+This guide covers the actual steps to get MDE running in productionâ€”not the marketing overview, but the commands you'll run and the decisions you'll make.
 
 ## Prerequisites and Licensing Reality Check
 
@@ -33,26 +33,26 @@ You'll also need:
 Start in the Microsoft 365 Defender portal at `security.microsoft.com`. Navigate to **Settings > Endpoints > Onboarding** and select your operating system. But before downloading any packages, configure your baseline settings.
 
 Under **Settings > Endpoints > Advanced features**, enable these:
-- **Automated Investigation** — set to "Full" for Plan 2
-- **Live Response** — critical for incident response
-- **Live Response unsigned script execution** — enable only if your IR team needs it
-- **Tamper Protection** — always enable this
-- **Web content filtering** — if you're replacing a proxy-based web filter
+- **Automated Investigation** â€” set to "Full" for Plan 2
+- **Live Response** â€” critical for incident response
+- **Live Response unsigned script execution** â€” enable only if your IR team needs it
+- **Tamper Protection** â€” always enable this
+- **Web content filtering** â€” if you're replacing a proxy-based web filter
 
 Device groups matter for RBAC and automated response policies. Create them under **Settings > Endpoints > Device groups** before onboarding. A typical structure:
 
 ```
-├── Production Servers
-│   ├── Windows Servers
-│   └── Linux Servers
-├── Workstations
-│   ├── IT Department
-│   ├── Finance (High Sensitivity)
-│   └── General Users
-└── Test/Dev Machines
+â”œâ”€â”€ Production Servers
+â”‚   â”œâ”€â”€ Windows Servers
+â”‚   â””â”€â”€ Linux Servers
+â”œâ”€â”€ Workstations
+â”‚   â”œâ”€â”€ IT Department
+â”‚   â”œâ”€â”€ Finance (High Sensitivity)
+â”‚   â””â”€â”€ General Users
+â””â”€â”€ Test/Dev Machines
 ```
 
-Use the "Rank" field to control evaluation order—devices match the first group rule that applies.
+Use the "Rank" field to control evaluation orderâ€”devices match the first group rule that applies.
 
 ## Windows Endpoint Onboarding
 
@@ -66,7 +66,7 @@ Create a device configuration profile:
 2. Platform: Windows 10 and later
 3. Profile type: Templates > Microsoft Defender for Endpoint (Windows 10 Desktop)
 
-The profile automatically pulls your onboarding blob from the tenant. Deploy to a test group first—always.
+The profile automatically pulls your onboarding blob from the tenant. Deploy to a test group firstâ€”always.
 
 ### SCCM/MECM Method
 
@@ -133,7 +133,7 @@ Watch out for kernel compatibility. MDE's real-time protection uses eBPF on newe
 
 ## Attack Surface Reduction and Policy Tuning
 
-Onboarding is only step one. The real protection comes from properly configured Attack Surface Reduction (ASR) rules. These rules block specific behaviors exploited by malware—like Office applications spawning child processes or scripts obfuscating their execution.
+Onboarding is only step one. The real protection comes from properly configured Attack Surface Reduction (ASR) rules. These rules block specific behaviors exploited by malwareâ€”like Office applications spawning child processes or scripts obfuscating their execution.
 
 Start in audit mode. Always. Deploy ASR rules in block mode on day one and you'll break legitimate applications faster than you can open support tickets.
 
@@ -158,14 +158,14 @@ Block Win32 API calls from Office macros: Audit
 Use advanced protection against ransomware: Audit
 ```
 
-Run audit mode for 2-4 weeks. Review blocked actions in **Reports > Security Report > Attack Surface Reduction Rules**. You'll identify legitimate applications triggering rules—add exclusions for those specific paths, then switch rules to block mode one at a time.
+Run audit mode for 2-4 weeks. Review blocked actions in **Reports > Security Report > Attack Surface Reduction Rules**. You'll identify legitimate applications triggering rulesâ€”add exclusions for those specific paths, then switch rules to block mode one at a time.
 
 ## Monitoring and Validation
 
 After deployment, verify everything actually works. The Defender portal's **Device Inventory** shows onboarding status and health metrics. Sort by "Onboarding status" to identify stragglers.
 
-Set up email notifications under **Settings > Endpoints > Email notifications** for high-severity alerts. Create separate notification rules for server vs. workstation device groups—your SOC doesn't need 3 AM pages for a user clicking a phishing link, but a server executing encoded PowerShell commands deserves immediate attention.
+Set up email notifications under **Settings > Endpoints > Email notifications** for high-severity alerts. Create separate notification rules for server vs. workstation device groupsâ€”your SOC doesn't need 3 AM pages for a user clicking a phishing link, but a server executing encoded PowerShell commands deserves immediate attention.
 
 Run the EICAR test file to verify detection and alerting pipeline end-to-end. If alerts don't appear within 15 minutes, check network connectivity to Microsoft endpoints and verify the SENSE service is running.
 
-Your next step: deploy to a pilot group of 50-100 machines across different business units, run ASR in audit mode for two weeks, then schedule the production rollout based on what you learn. Don't skip the pilot—the applications that break will always be the ones someone forgot to document.
+Your next step: deploy to a pilot group of 50-100 machines across different business units, run ASR in audit mode for two weeks, then schedule the production rollout based on what you learn. Don't skip the pilotâ€”the applications that break will always be the ones someone forgot to document.

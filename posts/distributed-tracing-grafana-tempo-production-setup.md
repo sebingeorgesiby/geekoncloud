@@ -1,7 +1,7 @@
----
-title: Distributed Tracing with Grafana Tempo: Production Setup Guide
+﻿---
+title: "Distributed Tracing with Grafana Tempo: Production Setup Guide"
 date: 2026-04-30
-excerpt: Deploy Grafana Tempo for distributed tracing. Complete setup with OpenTelemetry, trace correlation, and real query examples for debugging microservices.
+excerpt: "Deploy Grafana Tempo for distributed tracing. Complete setup with OpenTelemetry, trace correlation, and real query examples for debugging microservices."
 tags: ["observability","grafana-tempo","distributed-tracing","opentelemetry","kubernetes"]
 author: GeekOnCloud
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 Your microservices architecture is humming along until a request takes 47 seconds instead of 200 milliseconds. The user complaints roll in, and you're staring at dozens of service logs trying to piece together what happened. This is where distributed tracing stops being a "nice to have" and becomes the difference between a 10-minute fix and a 4-hour war room.
 
-Grafana Tempo is an open-source, high-scale distributed tracing backend that stores traces cheaply in object storage. Unlike Jaeger or Zipkin, Tempo doesn't require Elasticsearch or Cassandra — it writes directly to S3, GCS, or Azure Blob Storage. When paired with Grafana, you get a complete observability stack that actually scales without bankrupting your infrastructure budget.
+Grafana Tempo is an open-source, high-scale distributed tracing backend that stores traces cheaply in object storage. Unlike Jaeger or Zipkin, Tempo doesn't require Elasticsearch or Cassandra â€” it writes directly to S3, GCS, or Azure Blob Storage. When paired with Grafana, you get a complete observability stack that actually scales without bankrupting your infrastructure budget.
 
 ## Why Tempo Over Jaeger or Zipkin
 
@@ -53,7 +53,7 @@ volumes:
   tempo-data:
 ```
 
-Now the Tempo configuration file. This uses local filesystem storage — swap to S3 for production:
+Now the Tempo configuration file. This uses local filesystem storage â€” swap to S3 for production:
 
 ```yaml
 # tempo.yaml
@@ -97,7 +97,7 @@ metrics_generator:
         send_exemplars: true
 ```
 
-The `metrics_generator` section is crucial — it automatically generates RED metrics (Rate, Errors, Duration) from your traces and ships them to Prometheus. This means you get service graphs and span metrics without instrumenting twice.
+The `metrics_generator` section is crucial â€” it automatically generates RED metrics (Rate, Errors, Duration) from your traces and ships them to Prometheus. This means you get service graphs and span metrics without instrumenting twice.
 
 ## Instrumenting Your Application
 
@@ -168,7 +168,7 @@ datasources:
           datasourceUid: tempo
 ```
 
-With this configuration, clicking a trace ID in any Loki log jumps directly to the full trace in Tempo. The `tracesToLogsV2` config does the reverse — from any span in Tempo, you can jump to the correlated logs in Loki.
+With this configuration, clicking a trace ID in any Loki log jumps directly to the full trace in Tempo. The `tracesToLogsV2` config does the reverse â€” from any span in Tempo, you can jump to the correlated logs in Loki.
 
 ## Production Considerations
 

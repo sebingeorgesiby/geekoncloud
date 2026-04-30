@@ -248,9 +248,9 @@ function savePost(meta, content) {
   const finalSlug = path.basename(finalPath, '.md')
 
   const frontmatter = `---
-title: ${meta.title}
+title: "${meta.title}"
 date: ${date}
-excerpt: ${meta.excerpt}
+excerpt: "${meta.excerpt}"
 tags: ${JSON.stringify(meta.tags)}
 author: GeekOnCloud
 draft: false

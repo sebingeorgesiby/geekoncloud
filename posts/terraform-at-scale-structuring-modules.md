@@ -1,7 +1,7 @@
----
-title: Terraform at scale — structuring modules for 50+ environments
+﻿---
+title: "Terraform at scale â€” structuring modules for 50+ environments"
 date: 2025-04-10
-excerpt: Monolithic Terraform state files are a footgun. Here's the module structure and workspace strategy we use to manage 50+ environments without losing our minds.
+excerpt: "Monolithic Terraform state files are a footgun. Here's the module structure and workspace strategy we use to manage 50+ environments without losing our minds."
 tags: ["Terraform", "Platform Engineering", "Cloud Cost"]
 author: GeekOnCloud
 draft: false
@@ -9,7 +9,7 @@ draft: false
 
 ## The problem with flat Terraform
 
-Most teams start Terraform with a single `main.tf` and a single state file. This works until it doesn't — usually around the 5th environment or 20th engineer.
+Most teams start Terraform with a single `main.tf` and a single state file. This works until it doesn't â€” usually around the 5th environment or 20th engineer.
 
 The problems compound quickly:
 
@@ -24,21 +24,21 @@ After managing infrastructure for 3+ organisations, this is the layout that cons
 
 ```
 infra/
-├── modules/
-│   ├── networking/       # VPC, subnets, security groups
-│   ├── eks-cluster/      # EKS + node groups
-│   ├── rds/              # RDS with parameter groups
-│   └── observability/    # Prometheus, Grafana, alerting
-├── environments/
-│   ├── dev/
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── terraform.tfvars
-│   ├── staging/
-│   └── production/
-└── shared/
-    ├── dns/
-    └── ecr/
+â”œâ”€â”€ modules/
+â”‚   â”œâ”€â”€ networking/       # VPC, subnets, security groups
+â”‚   â”œâ”€â”€ eks-cluster/      # EKS + node groups
+â”‚   â”œâ”€â”€ rds/              # RDS with parameter groups
+â”‚   â””â”€â”€ observability/    # Prometheus, Grafana, alerting
+â”œâ”€â”€ environments/
+â”‚   â”œâ”€â”€ dev/
+â”‚   â”‚   â”œâ”€â”€ main.tf
+â”‚   â”‚   â”œâ”€â”€ variables.tf
+â”‚   â”‚   â””â”€â”€ terraform.tfvars
+â”‚   â”œâ”€â”€ staging/
+â”‚   â””â”€â”€ production/
+â””â”€â”€ shared/
+    â”œâ”€â”€ dns/
+    â””â”€â”€ ecr/
 ```
 
 **Key principle**: modules own *what*, environments own *where and how much*.
@@ -103,7 +103,7 @@ module "vpc" {
 
 We run Terraform through GitHub Actions with environment protection rules:
 
-1. `terraform plan` runs on every PR — output posted as a comment
+1. `terraform plan` runs on every PR â€” output posted as a comment
 2. `terraform apply` requires a manual approval step for staging/production
 3. `atlantis` or `env0` for teams that want automatic PR-driven workflows
 
@@ -126,4 +126,4 @@ This makes AWS Cost Explorer and FinOps tooling actually useful.
 
 ## Conclusion
 
-The upfront investment in a proper module structure pays back within weeks. Separate state per environment, versioned modules, and clear ownership boundaries are the foundation. Everything else — drift detection, cost attribution, automated plans — builds on top.
+The upfront investment in a proper module structure pays back within weeks. Separate state per environment, versioned modules, and clear ownership boundaries are the foundation. Everything else â€” drift detection, cost attribution, automated plans â€” builds on top.

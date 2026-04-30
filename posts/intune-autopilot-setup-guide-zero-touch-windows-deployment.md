@@ -1,19 +1,19 @@
----
-title: Intune AutoPilot Setup Guide: Zero-Touch Windows Deployment
+﻿---
+title: "Intune AutoPilot Setup Guide: Zero-Touch Windows Deployment"
 date: 2026-04-29
-excerpt: Deploy Windows devices at scale with Intune AutoPilot. From hardware hash collection to dynamic groups and ESP configs. Complete walkthrough.
+excerpt: "Deploy Windows devices at scale with Intune AutoPilot. From hardware hash collection to dynamic groups and ESP configs. Complete walkthrough."
 tags: ["intune","autopilot","windows-deployment","endpoint-management","microsoft-365"]
 author: GeekOnCloud
 draft: false
 ---
 
-Picture this: you've just received 200 laptops for your new hires, and your IT team is staring at the prospect of manually configuring each one. That's roughly 2-3 hours per device — about 500 hours of repetitive work. Or you could have those laptops shipped directly to employees, who unbox them, sign in, and get a fully configured corporate device in under 30 minutes. That's the promise of Windows Autopilot, and I'm going to show you exactly how to set it up from scratch.
+Picture this: you've just received 200 laptops for your new hires, and your IT team is staring at the prospect of manually configuring each one. That's roughly 2-3 hours per device â€” about 500 hours of repetitive work. Or you could have those laptops shipped directly to employees, who unbox them, sign in, and get a fully configured corporate device in under 30 minutes. That's the promise of Windows Autopilot, and I'm going to show you exactly how to set it up from scratch.
 
 ## Understanding What Autopilot Actually Does
 
-Autopilot isn't magic — it's a cloud-based device provisioning service that pre-configures Windows devices before users even touch them. When a device boots for the first time, it phones home to Microsoft, checks if it's registered in your Autopilot service, and if so, downloads your configuration profile.
+Autopilot isn't magic â€” it's a cloud-based device provisioning service that pre-configures Windows devices before users even touch them. When a device boots for the first time, it phones home to Microsoft, checks if it's registered in your Autopilot service, and if so, downloads your configuration profile.
 
-The flow works like this: Hardware vendor → Microsoft Autopilot service → Azure AD join → Intune enrollment → Configuration profiles applied → Apps installed → User gets a ready-to-work device.
+The flow works like this: Hardware vendor â†’ Microsoft Autopilot service â†’ Azure AD join â†’ Intune enrollment â†’ Configuration profiles applied â†’ Apps installed â†’ User gets a ready-to-work device.
 
 You need three things to make this work:
 1. **Azure AD Premium P1** (at minimum) or Microsoft 365 Business Premium/E3/E5
@@ -37,21 +37,21 @@ Get-WindowsAutopilotInfo -OutputFile C:\Temp\AutopilotHWID.csv
 Get-WindowsAutopilotInfo -Online -GroupTag "Engineering" -AssignedUser "jsmith@company.com"
 ```
 
-The `-GroupTag` parameter is crucial — it lets you categorize devices for different deployment profiles. I typically use tags like `Engineering`, `Sales`, `Executive`, and `Kiosk`.
+The `-GroupTag` parameter is crucial â€” it lets you categorize devices for different deployment profiles. I typically use tags like `Engineering`, `Sales`, `Executive`, and `Kiosk`.
 
 For new device purchases, work with your hardware vendor (Dell, HP, Lenovo all support this) to have them register hardware hashes at the point of sale. Here's how you'd request it from Dell:
 
 ```
-Dell Order Portal → Deploy → Windows Autopilot
+Dell Order Portal â†’ Deploy â†’ Windows Autopilot
 Tenant Domain: company.onmicrosoft.com
 Group Tag: NewHire-2024
 ```
 
-The vendor uploads hashes directly to your tenant — no manual work required. This is the "zero-touch" deployment everyone talks about.
+The vendor uploads hashes directly to your tenant â€” no manual work required. This is the "zero-touch" deployment everyone talks about.
 
 ## Creating Your Deployment Profile
 
-Navigate to **Microsoft Intune admin center** → **Devices** → **Windows** → **Windows enrollment** → **Deployment Profiles**.
+Navigate to **Microsoft Intune admin center** â†’ **Devices** â†’ **Windows** â†’ **Windows enrollment** â†’ **Deployment Profiles**.
 
 Here's where most people mess up: they create one generic profile and wonder why it doesn't fit all scenarios. Create specific profiles for specific use cases.
 
@@ -151,7 +151,7 @@ The IT technician:
 5. Device downloads configs, joins Azure AD, installs device-targeted apps
 6. Technician reseals the device
 
-When the user receives it, they sign in and only user-targeted policies and apps are applied — reducing their wait from 45 minutes to under 10.
+When the user receives it, they sign in and only user-targeted policies and apps are applied â€” reducing their wait from 45 minutes to under 10.
 
 Enable this in your deployment profile: **Allow pre-provisioned deployment: Yes**
 
@@ -159,7 +159,7 @@ Enable this in your deployment profile: **Allow pre-provisioned deployment: Yes*
 
 Your devices will fail. Accept this reality and build monitoring into your process.
 
-Check deployment status in Intune: **Devices** → **Monitor** → **Autopilot deployments**
+Check deployment status in Intune: **Devices** â†’ **Monitor** â†’ **Autopilot deployments**
 
 Common failure codes:
 - **0x800705B4**: Timeout waiting for app installation. Increase ESP timeout or mark non-critical apps as non-blocking.
@@ -177,8 +177,8 @@ Extract the cab file and examine `microsoft-windows-devicemanagement-enterprise-
 
 ## Your Next Step
 
-Don't try to boil the ocean. Start with five test devices — register their hardware hashes, create a single deployment profile with basic settings, and run through the entire flow manually. Time it. Note what breaks. Iterate.
+Don't try to boil the ocean. Start with five test devices â€” register their hardware hashes, create a single deployment profile with basic settings, and run through the entire flow manually. Time it. Note what breaks. Iterate.
 
 Once you've successfully provisioned those five devices end-to-end without intervention, work with your hardware vendor to register the next batch of purchased devices automatically. Scale from there.
 
-The goal isn't perfection on day one — it's eliminating one manual touchpoint at a time until your IT team stops touching devices entirely.
+The goal isn't perfection on day one â€” it's eliminating one manual touchpoint at a time until your IT team stops touching devices entirely.

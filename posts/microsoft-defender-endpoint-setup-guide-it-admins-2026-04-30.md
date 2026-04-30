@@ -1,15 +1,15 @@
----
-title: Microsoft Defender for Endpoint Setup Guide for IT Admins
+﻿---
+title: "Microsoft Defender for Endpoint Setup Guide for IT Admins"
 date: 2026-04-30
-excerpt: Deploy Microsoft Defender for Endpoint across your org. Complete IT admin guide covering onboarding, policies, ASR rules, and EDR configuration.
+excerpt: "Deploy Microsoft Defender for Endpoint across your org. Complete IT admin guide covering onboarding, policies, ASR rules, and EDR configuration."
 tags: ["microsoft-defender","endpoint-security","windows-security","intune","enterprise-security"]
 author: GeekOnCloud
 draft: false
 ---
 
-You've been tasked with rolling out Microsoft Defender for Endpoint (MDE) across your organization. The marketing pages make it sound simple—"just deploy and protect." Anyone who's actually done this knows better. Between onboarding methods, policy configurations, exclusions that break production apps, and the maze of Azure AD prerequisites, there's plenty of room to get this wrong.
+You've been tasked with rolling out Microsoft Defender for Endpoint (MDE) across your organization. The marketing pages make it sound simpleâ€”"just deploy and protect." Anyone who's actually done this knows better. Between onboarding methods, policy configurations, exclusions that break production apps, and the maze of Azure AD prerequisites, there's plenty of room to get this wrong.
 
-This guide walks through a real-world MDE deployment from zero to operational. No hand-waving, no screenshots of the security center—actual configurations, actual PowerShell, actual gotchas.
+This guide walks through a real-world MDE deployment from zero to operational. No hand-waving, no screenshots of the security centerâ€”actual configurations, actual PowerShell, actual gotchas.
 
 ## Prerequisites That Will Block You If You Skip Them
 
@@ -27,7 +27,7 @@ Get-MgSubscribedSku | Select-Object SkuPartNumber, ConsumedUnits, PrepaidUnits |
 # WIN_DEF_ATP (Standalone MDE)
 ```
 
-Your Azure AD tenant needs to be the same tenant where you'll manage MDE. Sounds obvious, but I've seen organizations with historical M&A baggage running multiple tenants—MDE won't span them without additional architecture.
+Your Azure AD tenant needs to be the same tenant where you'll manage MDE. Sounds obvious, but I've seen organizations with historical M&A baggage running multiple tenantsâ€”MDE won't span them without additional architecture.
 
 Enable the MDE service in the Microsoft 365 Defender portal (security.microsoft.com) under Settings > Endpoints > Advanced features. Turn on:
 
@@ -52,7 +52,7 @@ For Intune (the cleanest path), create an Endpoint Detection and Response policy
 
 1. Intune admin center > Endpoint security > Endpoint detection and response
 2. Create a profile for Windows 10/11
-3. The only required setting is pointing to your tenant—Intune handles the rest
+3. The only required setting is pointing to your tenantâ€”Intune handles the rest
 
 For environments without Intune, grab the onboarding package from security.microsoft.com > Settings > Endpoints > Onboarding. Here's a GPO deployment approach using the WindowsDefenderATPOnboardingScript.cmd:
 
@@ -182,7 +182,7 @@ Common exclusions needed:
 
 ## Tuning Alert Fatigue
 
-Out of the box, MDE generates noise. A fresh deployment will flag PowerShell scripts, IT tools like PSExec, and admin activities as suspicious—because they often are, just not malicious in your context.
+Out of the box, MDE generates noise. A fresh deployment will flag PowerShell scripts, IT tools like PSExec, and admin activities as suspiciousâ€”because they often are, just not malicious in your context.
 
 Create suppression rules in security.microsoft.com > Settings > Endpoints > Alert suppression. Target specific combinations:
 
