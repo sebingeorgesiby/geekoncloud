@@ -2,6 +2,7 @@
 import PostCard from '../../components/PostCard'
 import Link from 'next/link'
 import { getSortedPosts, Post } from '../../lib/posts'
+import { GetServerSideProps } from 'next'
 
 interface TagProps { tag: string; posts: Post[] }
 
@@ -24,21 +25,16 @@ export default function TagPage({ tag, posts }: TagProps) {
   )
 }
 
-export async function getStaticPaths() {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const posts = getSortedPosts()
-  const tagMap: Record<string, boolean> = {}
-  posts.forEach(p => p.tags.forEach((t: string) => { tagMap[t] = true }))
-  const tags = Object.keys(tagMap)
-  return {
-    paths: tags.map(tag => ({ params: { tag: tag.toLowerCase().replace(/ /g, '-') } })),
-    fallback: 'blocking'
-  }
-}
-
-export async function getStaticProps({ params }: { params: { tag: string } }) {
-  const posts = getSortedPosts()
-  const tagName = params.tag.replace(/-/g, ' ')
-  const filtered = posts.filter((p: any) => p.tags.some((t: string) => t.toLowerCase() === tagName))
-  const matchedTag = filtered[0]?.tags.find((t: string) => t.toLowerCase() === tagName) || tagName
+  const tagSlug = (params?.tag as string) || ''
+  const tagName = tagSlug.replace(/-/g, ' ')
+  const filtered = posts.filter(p =>
+    p.tags.some(t => t.toLowerCase() === tagName.toLowerCase())
+  )
+  const matchedTag = filtered[0]?.tags.find(
+    t => t.toLowerCase() === tagName.toLowerCase()
+  ) || tagName
   return { props: { tag: matchedTag, posts: filtered } }
 }
+
