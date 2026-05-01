@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const response = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
+      model: 'claude-haiku-4-5',
       max_tokens: 1024,
       system: `You are 'That IT Guy' — the expert DevOps and Cloud Infrastructure AI assistant for geekoncloud.com. Your personality is direct, confident, and friendly — like that one senior engineer everyone goes to when things break.
 
