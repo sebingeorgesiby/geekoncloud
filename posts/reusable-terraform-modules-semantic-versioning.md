@@ -189,3 +189,13 @@ The goal is making modules boring. Boring infrastructure is reliable infrastruct
 ---
 
 Your next step: pick one piece of copy-pasted Terraform in your codebase and extract it into a versioned module. Start with something small—a security group pattern, an S3 bucket with standard encryption settings. Get the structure right on something low-risk before tackling your VPC or EKS setup. Ship it with a v0.1.0 tag, wire up basic CI, and iterate from there.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[Terraform Cloud](https://app.terraform.io/signup?utm_source=geekoncloud)** — managed Terraform with remote state and team collaboration

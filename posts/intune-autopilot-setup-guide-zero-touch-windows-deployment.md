@@ -182,3 +182,13 @@ Don't try to boil the ocean. Start with five test devices â€” register thei
 Once you've successfully provisioned those five devices end-to-end without intervention, work with your hardware vendor to register the next batch of purchased devices automatically. Scale from there.
 
 The goal isn't perfection on day one â€” it's eliminating one manual touchpoint at a time until your IT team stops touching devices entirely.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[DigitalOcean](https://www.digitalocean.com/?refcode=YOUR_REF_CODE)** — simple and affordable cloud hosting

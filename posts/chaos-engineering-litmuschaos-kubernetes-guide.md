@@ -178,3 +178,13 @@ Create a Grafana dashboard with annotations marking chaos experiment windows. Wh
 Start with experiments matching real incidents you've experienced. If you've had node failures cause outages, run node-drain experiments. If network issues between services caused cascading failures, inject latency between those specific services. Chaos engineering isn't about random destructionâ€”it's about systematically validating that your systems handle the failures you know will happen.
 
 Your next step: pick one critical service, write one chaos experiment with a meaningful probe, and run it in staging tomorrow. Commit the experiment YAML to your infrastructure repo. You'll learn more about your system's failure modes in 30 minutes than months of reading runbooks.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[CircleCI](https://circleci.com/?utm_source=geekoncloud)** — fast and reliable CI/CD pipelines

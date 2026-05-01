@@ -169,3 +169,13 @@ Set up email notifications under **Settings > Endpoints > Email notifications** 
 Run the EICAR test file to verify detection and alerting pipeline end-to-end. If alerts don't appear within 15 minutes, check network connectivity to Microsoft endpoints and verify the SENSE service is running.
 
 Your next step: deploy to a pilot group of 50-100 machines across different business units, run ASR in audit mode for two weeks, then schedule the production rollout based on what you learn. Don't skip the pilotâ€”the applications that break will always be the ones someone forgot to document.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[CircleCI](https://circleci.com/?utm_source=geekoncloud)** — fast and reliable CI/CD pipelines

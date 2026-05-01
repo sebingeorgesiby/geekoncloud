@@ -218,3 +218,13 @@ DeviceInfo
 ```
 
 The deployment is done when you have: 95%+ endpoint coverage, ASR rules in block mode with validated exclusions, alert workflows routing to your SOC or managed service, and a documented exception process for future exclusions. Now start hunting.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[DigitalOcean](https://www.digitalocean.com/?refcode=YOUR_REF_CODE)** — simple and affordable cloud hosting

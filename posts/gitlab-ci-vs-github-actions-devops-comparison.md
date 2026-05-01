@@ -201,3 +201,13 @@ Choose GitHub Actions if your team lives in GitHub, wants fast iteration over pe
 For my current projects: internal platform tooling runs on GitLab CI with self-hosted runners on Kubernetes. Open source libraries use GitHub Actions with aggressive action pinning. The tools aren't competingâ€”they're optimized for different operational contexts.
 
 The real next step isn't choosing a platform. It's auditing your current pipelines. Run `git log --oneline .gitlab-ci.yml | wc -l` or check your workflow edit history. If you're changing CI config more than twice a week, your pipeline is too complex regardless of platform. Fix that first.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[CircleCI](https://circleci.com/?utm_source=geekoncloud)** — fast and reliable CI/CD pipelines

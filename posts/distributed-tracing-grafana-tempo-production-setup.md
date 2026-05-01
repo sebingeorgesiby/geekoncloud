@@ -214,3 +214,13 @@ This configuration keeps all error traces, all traces over 1 second, and 10% of 
 You've got Tempo running, but tracing infrastructure without trace-aware alerting is half the value. Set up alerts on the RED metrics Tempo generates: alert when p99 latency exceeds your SLO, when error rates spike, or when a service's span count drops (indicating potential failures).
 
 The next step is adding trace exemplars to your Prometheus metrics. When your latency alert fires, you'll have direct links to example traces that show exactly which requests were slow. Configure this with the `exemplars` feature in your metrics scrape config and the matching Tempo data source setup in Grafana. That's when distributed tracing stops being a debugging tool and becomes your first line of defense.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[DigitalOcean](https://www.digitalocean.com/?refcode=YOUR_REF_CODE)** — simple and affordable cloud hosting

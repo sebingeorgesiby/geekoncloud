@@ -127,3 +127,13 @@ This makes AWS Cost Explorer and FinOps tooling actually useful.
 ## Conclusion
 
 The upfront investment in a proper module structure pays back within weeks. Separate state per environment, versioned modules, and clear ownership boundaries are the foundation. Everything else â€” drift detection, cost attribution, automated plans â€” builds on top.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[Terraform Cloud](https://app.terraform.io/signup?utm_source=geekoncloud)** — managed Terraform with remote state and team collaboration

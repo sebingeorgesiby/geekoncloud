@@ -221,3 +221,13 @@ Add this to the runbook header. Make it part of your service catalog. When the o
 Pick your noisiest alert from the last month. Write a runbook for it using the YAML structure above. Tomorrow, during business hours, have someone else on your team execute it while you watch. Don't help themâ€”just take notes on where they get stuck.
 
 Those notes are your backlog. Fix them, then move to the next alert.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[DigitalOcean](https://www.digitalocean.com/?refcode=YOUR_REF_CODE)** — simple and affordable cloud hosting

@@ -112,3 +112,13 @@ If you're using Argo CD, install the [argo-cd-rollouts plugin](https://argo-cd.r
 ## Conclusion
 
 Argo Rollouts takes about 30 minutes to install and configure. The payoff is production deployments you can actually control â€” progressive traffic shifts, automated rollback, and full observability. There's no reason to run raw `RollingUpdate` in production once you've tried it.
+
+---
+
+## Tools & Resources
+
+*Tools relevant to this post. Some links are affiliate links — they cost you nothing and help keep geekoncloud.com running.*
+
+- **[Datadog](https://www.datadoghq.com/?utm_source=geekoncloud)** — cloud monitoring and observability platform
+- **[Snyk](https://snyk.io/?utm_source=geekoncloud)** — developer-first security and vulnerability scanning
+- **[CircleCI](https://circleci.com/?utm_source=geekoncloud)** — fast and reliable CI/CD pipelines
