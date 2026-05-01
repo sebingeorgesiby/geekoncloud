@@ -36,9 +36,15 @@ export default function AskPage() {
         body: JSON.stringify({ messages: [...messages, userMsg] }),
       })
       const data = await res.json()
-      setMessages(prev => [...prev, { role: 'assistant', content: data.content }])
-    } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Something went wrong. Try again!' }])
+      if (data.error) {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'Error: ' + data.error }])
+      } else if (data.content) {
+        setMessages(prev => [...prev, { role: 'assistant', content: data.content }])
+      } else {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'No response received. Please try again.' }])
+      }
+    } catch (err: any) {
+      setMessages(prev => [...prev, { role: 'assistant', content: 'Connection error: ' + (err.message || 'Please try again.') }])
     }
     setLoading(false)
   }
