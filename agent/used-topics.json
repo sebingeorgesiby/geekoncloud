@@ -5,5 +5,6 @@
   "Chaos engineering with LitmusChaos on Kubernetes",
   "On-call runbooks that actually help during incidents",
   "GitLab CI vs GitHub Actions — a DevOps engineer comparison",
-  "Distributed tracing with Tempo and Grafana"
+  "Distributed tracing with Tempo and Grafana",
+  "Writing reusable Terraform modules with proper versioning"
 ]

@@ -14,6 +14,10 @@ export default function Navbar() {
           <Link href="/" className="btn-ghost">Home</Link>
           <Link href="/blog" className="btn-ghost">Blog</Link>
           <Link href="/tags" className="btn-ghost">Topics</Link>
+          <Link href="/ask" className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-cloud-600 hover:text-cloud-700 hover:bg-cloud-50 rounded-lg transition-colors">
+            <span className="w-1.5 h-1.5 rounded-full bg-cloud-500 animate-pulse" />
+            Ask AI
+          </Link>
           <Link href="/about" className="btn-ghost">About</Link>
         </nav>
         <button className="sm:hidden p-2 rounded-lg hover:bg-ink-50" onClick={() => setOpen(!open)} aria-label="Menu">
@@ -25,10 +29,10 @@ export default function Navbar() {
       </div>
       {open && (
         <div className="sm:hidden border-t border-ink-100 px-4 py-3 space-y-1 bg-white">
-          {['/', '/blog', '/tags', '/about'].map((href, i) => (
+          {['/', '/blog', '/tags', '/ask', '/about'].map((href, i) => (
             <Link key={href} href={href} className="block px-3 py-2 rounded-lg hover:bg-ink-50 text-sm text-ink-700"
               onClick={() => setOpen(false)}>
-              {['Home', 'Blog', 'Topics', 'About'][i]}
+              {['Home', 'Blog', 'Topics', 'Ask AI', 'About'][i]}
             </Link>
           ))}
         </div>

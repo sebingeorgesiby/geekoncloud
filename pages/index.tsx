@@ -75,6 +75,22 @@ export default function Home({ posts }: HomeProps) {
             ))}
           </div>
         </section>
+
+        {/* Ask AI CTA */}
+        <section className="mt-8 rounded-2xl bg-ink-900 p-8 text-center relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5" style={{backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '24px 24px'}} />
+          <div className="relative">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cloud-500/30 bg-cloud-500/10 text-cloud-300 text-xs font-mono mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-cloud-400 animate-pulse" />
+              AI Assistant — live
+            </div>
+            <h2 className="font-display text-2xl font-bold text-white mb-2">Got a DevOps question?</h2>
+            <p className="text-ink-400 text-sm mb-6 max-w-md mx-auto">Ask our Claude-powered AI anything about Kubernetes, Terraform, CI/CD, cloud costs, or infrastructure. Real answers, instantly.</p>
+            <Link href="/ask" className="inline-flex items-center gap-2 px-6 py-3 bg-cloud-600 hover:bg-cloud-700 text-white text-sm font-medium rounded-lg transition-colors">
+              Ask a question →
+            </Link>
+          </div>
+        </section>
       </div>
     </Layout>
   )
